@@ -36,44 +36,115 @@ function getIngredientsArray(pizza) {
         </div>
 
 
+        <%if ("small_size" in pizza && "big_size" in pizza){%>
         <div class="row">
 
+        <%if("small_size" in pizza){%>
             <div class="col-xs-6" style="text-align: center">
                 <%=pizza.small_size.size%>
                 <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">
             </div>
+            <%}if("big_size" in pizza){%>
 
             <div class="col-xs-6" style="text-align: center">
                 <%=pizza.big_size.size%>
                 <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">
             </div>
+            <%}%>
 
         </div>
 
 
         <div class="row">
+            <%if("small_size" in pizza){%>
 
             <div class="col-xs-6" style="text-align: center">
                 <%=pizza.small_size.weight%>
                 <img class="ui right spaced avatar image" src="assets/images/weight.svg">
             </div>
+            <%}if("big_size" in pizza){%>
 
             <div class="col-xs-6" style="text-align: center">
                 <%=pizza.big_size.weight%>
                 <img class="ui right spaced avatar image" src="assets/images/weight.svg">
             </div>
+            <%}%>
+        </div>
 
+
+
+        <div class="row">
+            <%if("small_size" in pizza){%>
+
+            <div class="col-xs-6" style="text-align: center">
+                <%=pizza.small_size.price%>
+            </div>
+            <%}if("big_size" in pizza){%>
+
+            <div class="col-xs-6" style="text-align: center">
+                <%=pizza.big_size.price%>
+            </div>
+            <%}%>
+        </div>
+
+
+        <div class="row">
+            <%if("small_size" in pizza){%>
+
+            <div class="col-xs-6" style="text-align: center">
+                ГРН
+            </div>
+            <%}if("big_size" in pizza){%>
+            <div class="col-xs-6" style="text-align: center">
+                ГРН
+            </div>
+            <%}%>
+        </div>
+
+
+
+        <div class="row">
+            <%if("small_size" in pizza){%>
+
+            <div class="col-xs-6" style="text-align: center">
+                <button class="btn btn-primary buy-small">Small</button>
+            </div>
+            <%}if("big_size" in pizza){%>
+            <div class="col-xs-6" style="text-align: center">
+                <button class="btn btn-default buy-big">Big</button>
+            </div>
+            <%}%>
+        </div>
+
+
+        <%}if(!("small_size" in pizza)){%>
+        <div class="row">
+
+
+
+            <div class="col-xs-12" style="text-align: center">
+                <%=pizza.big_size.size%>
+                <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">
+            </div>
+
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-xs-12" style="text-align: center">
+                <%=pizza.big_size.weight%>
+                <img class="ui right spaced avatar image" src="assets/images/weight.svg">
+            </div>
         </div>
 
 
 
         <div class="row">
 
-            <div class="col-xs-6" style="text-align: center">
-                <%=pizza.small_size.price%>
-            </div>
 
-            <div class="col-xs-6" style="text-align: center">
+            <div class="col-xs-12" style="text-align: center">
                 <%=pizza.big_size.price%>
             </div>
 
@@ -82,11 +153,7 @@ function getIngredientsArray(pizza) {
 
         <div class="row">
 
-            <div class="col-xs-6" style="text-align: center">
-                ГРН
-            </div>
-
-            <div class="col-xs-6" style="text-align: center">
+            <div class="col-xs-12" style="text-align: center">
                 ГРН
             </div>
 
@@ -96,15 +163,65 @@ function getIngredientsArray(pizza) {
 
         <div class="row">
 
-            <div class="col-xs-6" style="text-align: center">
-                <button class="btn btn-primary buy-small">Small</button>
-            </div>
-
-            <div class="col-xs-6" style="text-align: center">
+            <div class="col-xs-12" style="text-align: center">
                 <button class="btn btn-default buy-big">Big</button>
             </div>
 
         </div>
+        <%}if(!("big_size" in pizza)){%>
+        <div class="row">
+
+            <div class="col-xs-12" style="text-align: center">
+                <%=pizza.small_size.size%>
+                <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">
+            </div>
+
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-xs-12" style="text-align: center">
+                <%=pizza.small_size.weight%>
+                <img class="ui right spaced avatar image" src="assets/images/weight.svg">
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+
+            <div class="col-xs-12" style="text-align: center">
+                <%=pizza.small_size.price%>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-xs-12" style="text-align: center">
+                ГРН
+            </div>
+        </div>
+
+
+
+        <div class="row">
+
+
+            <div class="col-xs-12" style="text-align: center">
+                <button class="btn btn-primary buy-small">Small</button>
+            </div>
+        </div>
+        <%}%>
+
+
+
+
+
     </div>
 </div>
 

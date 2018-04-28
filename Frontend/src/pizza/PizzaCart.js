@@ -46,9 +46,15 @@ function removeFromCart(cart_item) {
 }
 
 function initialiseCart() {
-    //Фукнція віпрацьвуватиме при завантаженні сторінки
-    //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
-    //TODO: ...
+    var $counter = $(".counter");
+    Cart = JSON.parse(localStorage.getItem("key"));
+    if(Cart===null){
+        Cart=[];
+    }
+    var val = 0;
+    Cart.forEach(function (value) {
+        val+=value.pizza[value.size].price*value.quantity });
+    $counter.text(val);
 
     updateCart();
 }
@@ -109,6 +115,8 @@ function updateCart() {
         $cart.append($node);
 
     }
+    localStorage.clear();
+    localStorage.setItem("key", JSON.stringify(Cart));
 
     Cart.forEach(showOnePizzaInCart);
     $(".counter").text(sum);

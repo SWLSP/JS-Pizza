@@ -27,8 +27,13 @@ function showPizzaList(list) {
 
         $pizza_list.append($node);
     }
+    countOfPizza = 0;
 
-    list.forEach(showOnePizza);
+    list.forEach(function (value) {
+       showOnePizza(value);
+       countOfPizza++;
+    });
+    $(".amount").text(countOfPizza);
 }
 
 function filterPizza(filter) {
@@ -37,9 +42,27 @@ function filterPizza(filter) {
 
     Pizza_List.forEach(function(pizza){
         //Якщо піка відповідає фільтру
-        //pizza_shown.push(pizza);
+        if(filter==="all"){
+            pizza_shown=Pizza_List;
+        }
+        if(filter==="meat"){
+            if(("meat" in pizza.content)||("chicken" in pizza.content))pizza_shown.push(pizza);
+        }
+        if(filter==="mushroom"){
+            if("mushroom" in pizza.content)pizza_shown.push(pizza);
+        }
+        if(filter==="pineapple"){
+            if("pineapple" in pizza.content)pizza_shown.push(pizza);
 
-        //TODO: зробити фільтри
+        }
+        if(filter==="ocean"){
+            if("ocean" in pizza.content)pizza_shown.push(pizza);
+        }
+        if(filter==="vegan"){
+            if(!(("meat" in pizza.content)||("chicken" in pizza.content)||("ocean" in pizza.content)))pizza_shown.push(pizza);
+
+        }
+
     });
 
     //Показати відфільтровані піци
