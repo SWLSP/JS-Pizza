@@ -35,7 +35,76 @@ function getIngredientsArray(pizza) {
             </div>
         </div>
 
-        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->
-        <button class="btn btn-primary buy-big">Купити велику</button>
+
+        <div class="row">
+
+            <div class="col-xs-6" style="text-align: center">
+                <%=pizza.small_size.size%>
+                <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">
+            </div>
+
+            <div class="col-xs-6" style="text-align: center">
+                <%=pizza.big_size.size%>
+                <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-xs-6" style="text-align: center">
+                <%=pizza.small_size.weight%>
+                <img class="ui right spaced avatar image" src="assets/images/weight.svg">
+            </div>
+
+            <div class="col-xs-6" style="text-align: center">
+                <%=pizza.big_size.weight%>
+                <img class="ui right spaced avatar image" src="assets/images/weight.svg">
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+
+            <div class="col-xs-6" style="text-align: center">
+                <%=pizza.small_size.price%>
+            </div>
+
+            <div class="col-xs-6" style="text-align: center">
+                <%=pizza.big_size.price%>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-xs-6" style="text-align: center">
+                ГРН
+            </div>
+
+            <div class="col-xs-6" style="text-align: center">
+                ГРН
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+
+            <div class="col-xs-6" style="text-align: center">
+                <button class="btn btn-primary buy-small">Small</button>
+            </div>
+
+            <div class="col-xs-6" style="text-align: center">
+                <button class="btn btn-default buy-big">Big</button>
+            </div>
+
+        </div>
     </div>
 </div>
+
