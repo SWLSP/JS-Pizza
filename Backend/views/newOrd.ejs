@@ -1,0 +1,143 @@
+<% include common/header.ejs %>
+
+
+<div class="pizzaKMA">
+    <span>Pizza</span>
+    <span>KMA</span>
+</div>
+
+<div class="header">
+
+    <div class="toptop">
+        <span class="contact_number"> (044) 222 5222 </span>
+        <span class="working_time"> 24 години/7 днів </span>
+        <span class="free_pizza"> Безкоштовна доставка піци </span>
+        <div class="enter_button">
+            <button>Війти</button>
+        </div>
+
+    </div>
+
+    <div class="lowtop">
+        Піца
+
+    </div>
+
+</div>
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-7">
+            <form class="form-horizontal">
+                <div class="form-group name-group">
+                    <label class="col-sm-2 control-label">Ім’я</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" id="inputName" placeholder="Ім’я Фамілія">
+                    </div>
+                    <span class="name-help-block" style="display:none; padding-left: 90px; color:red;">
+                                Введіть тільки власне ім’я, без цифр
+                            </span>
+                </div>
+                <div class="form-group phone-group">
+                    <label class="col-sm-2 control-label">Телефон</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" id="inputPhone" placeholder="+380994010999">
+                    </div>
+                    <span class="phone-help-block" style="display:none; padding-left: 90px; color:red;">
+                                Введіть номер телефону у форматі +380 або почніть з 0
+                            </span>
+                </div>
+                <div class="form-group address-group">
+                    <label class="col-sm-2 control-label">Адреса</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" id="inputAdress" placeholder="Київ, вул. Спаська, 2">
+                    </div>
+                    <span class="address-help-block" style="display:none; padding-left: 90px; color:red;">
+                                Введіть адресу доставки піци
+                            </span>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-5 order-summary">
+            <div class=" bs-callout bs-callout-warning">
+                <h4>Інформація про замовлення</h4>
+                <p class="order-summery-time">
+                    <b>Приблизний час доставки:</b> <span class="timeToGet">невідомий</span>
+                </p>
+                <p class="order-summery-adress">
+                    <b>Адреса доставки:</b> <span class="neededAdress">невідома</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="nextBut clearfix">
+        <button class="floatR btn btn-warning createOrder">Далі</button>
+    </div>
+
+
+
+    </div>
+
+</div>
+
+<div id="cart">
+    <div class="orders">
+        <div class="order_text">
+            <div class="text">Замовлення
+                <div class="order_amount">1</div>
+            </div>
+        </div>
+        <div class="clear_orders">Очистити замовлення</div>
+    </div>
+
+    <div class="cart_items" >
+        <div class="cart_item">
+            <div class="name">Impresa (small_size)</div>
+            <div class="size">
+                <div class="diametr">
+                    <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">30
+                </div>
+                <div class="weight">
+                    <img class="ui right spaced avatar image" src="assets/images/weight.svg">500
+                </div>
+            </div>
+            <div class="correct_pizza">
+                <div class="price">1 UAH</div>
+                <div class="minus">
+                    <button>-</button>
+                </div>
+                <div class="count">2</div>
+                <div class="plus">
+                    <button>+</button>
+
+                </div>
+                <div class="delete">
+                    <button>x</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="final">
+        <div class="sum_orders">
+            <div class="sum">Сума замовлення</div>
+            <span class="counter">2</span>
+        </div>
+
+        <button>До вибору</button>
+
+    </div>
+
+</div>
+
+<div class="discount">
+    <span>Discount</span>
+    <span>20% On Everything</span>
+</div>
+
+
+<% include common/footer.ejs %>

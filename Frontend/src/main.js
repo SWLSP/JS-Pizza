@@ -1,12 +1,21 @@
 
 $(function(){
+    var API=require('./API');
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
-    var Pizza_List = require('./Pizza_List');
 
     PizzaCart.initialiseCart();
-    PizzaMenu.initialiseMenu();
+    API.getPizzaList(function (error,pizzaList) {
+        if(error){
+            alert("Failed to load pizzas");
+        }
+        else{
+            PizzaMenu.initialiseMenu(pizzaList);
+
+        }
+
+    });
 
 
     var pre = $(".all");
@@ -59,5 +68,14 @@ $(function(){
         $(".pizzas_all").text("Вегетаріанські піци");
     });
 
+    $(".createOrder").click(function () {
+        var pizzasInCart = PizzaCart.getPizzaInCart();
+        var name = $("#inputName").val();
+        var telephone = $("#inputPhone").val();
+        var adress = $("#inputAdress").val();
+        
+        API.createOrder({name:name, telephone:telephone, adress:adress, pizzasInCart:pizzasInCart}, function (err, data) {
 
+        })
+    })
 });

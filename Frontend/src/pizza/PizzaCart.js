@@ -10,70 +10,70 @@ var PizzaSize = {
 };
 
 //Змінна в якій зберігаються перелік піц в кошику
-var Cart = [];
+var Basket = [];
 
 //HTML едемент куди будуть додаватися піци
-var $cart = $(".cart_items");
+var $basket = $(".cart_items");
 
-function addToCart(pizza, size) {
-    var pizzaInCart = false;
-    Cart.forEach(function (value){
+function replenishBasket(pizza, size) {
+    var filledBasket = false;
+    Basket.forEach(function (value){
         //Перевірка на наявність піцци в кошику - якщо є, то збільшуємо кількість
         if((value.pizza.id===pizza.id)&&(value.size===size)){
-            pizzaInCart = true;
+            filledBasket = true;
             value.quantity+=1;
         }
     });
 
     //Якщо піцци немає в кошику, то додати
-    if(pizzaInCart===false){
-    Cart.push({
+    if(filledBasket===false){
+    Basket.push({
         pizza: pizza,
         size: size,
         quantity: 1
     })}
 
     //Оновити вміст кошика на сторінці
-    updateCart();
+    refreshBasket();
 }
 
-function removeFromCart(cart_item) {
-    for (var i = 0; i < Cart.length; i++) {
-        if(Cart[i].pizza.id===cart_item.pizza.id&&Cart[i].size===cart_item.size)Cart.splice(i,1);
+function expelFromBasket(cart_item) {
+    for (var i = 0; i < Basket.length; i++) {
+        if(Basket[i].pizza.id===cart_item.pizza.id&&Basket[i].size===cart_item.size)Basket.splice(i,1);
     }
     //Після видалення оновити відображення
-    updateCart();
+    refreshBasket();
 }
 
-function initialiseCart() {
+function initialiseBasket() {
     var $counter = $(".counter");
-    Cart = JSON.parse(localStorage.getItem("key"));
-    if(Cart===null){
-        Cart=[];
+    Basket = JSON.parse(localStorage.getItem("key"));
+    if(Basket===null){
+        Basket=[];
     }
-    var val = 0;
-    Cart.forEach(function (value) {
-        val+=value.pizza[value.size].price*value.quantity });
-    $counter.text(val);
+    var value = 0;
+    Basket.forEach(function (value) {
+        value+=value.pizza[value.size].price*value.quantity });
+    $counter.text(value);
 
-    updateCart();
+    refreshBasket();
 }
 
-function getPizzaInCart() {
+function getPizzasInBasket() {
     //Повертає піци які зберігаються в кошику
-    return Cart;
+    return Basket;
 }
 
-function updateCart() {
+function refreshBasket() {
     //Функція викликається при зміні вмісту кошика
 
-    var sum=0;
-    var order =0;
+    var sum = 0;
+    var order = 0;
 
 
 
     //Очищаємо старі піци в кошику
-    $cart.html("");
+    $basket.html("");
 
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
@@ -87,7 +87,7 @@ function updateCart() {
             sum+= cart_item.pizza[cart_item.size].price;
 
             //Оновлюємо відображення
-            updateCart();
+            refreshBasket();
         }
         );
         $node.find(".minus").click(function(){
@@ -95,30 +95,30 @@ function updateCart() {
                 cart_item.quantity -= 1;
                 sum-= cart_item.pizza[cart_item.size].price;
                 if(cart_item.quantity===0){
-                    removeFromCart(cart_item);
+                    expelFromBasket(cart_item);
                 }
 
                 //Оновлюємо відображення
-                updateCart();
+                refreshBasket();
             }
         );
         //Видаляємо замовлення
         $node.find(".delete").click(function(){
-                    removeFromCart(cart_item);
+                    expelFromBasket(cart_item);
                 //Оновлюємо відображення
-                updateCart();
+                refreshBasket();
             }
         );
 
         sum+= cart_item.pizza[cart_item.size].price*cart_item.quantity;
         order+=1;
-        $cart.append($node);
+        $basket.append($node);
 
     }
     localStorage.clear();
-    localStorage.setItem("key", JSON.stringify(Cart));
+    localStorage.setItem("key", JSON.stringify(Basket));
 
-    Cart.forEach(showOnePizzaInCart);
+    Basket.forEach(showOnePizzaInCart);
     $(".counter").text(sum);
     $(".order_amount").text(order);
 
@@ -126,10 +126,10 @@ function updateCart() {
 
 }
 
-exports.removeFromCart = removeFromCart;
-exports.addToCart = addToCart;
+exports.removeFromCart = expelFromBasket;
+exports.addToCart = replenishBasket;
 
-exports.getPizzaInCart = getPizzaInCart;
-exports.initialiseCart = initialiseCart;
+exports.getPizzaInCart = getPizzasInBasket;
+exports.initialiseCart = initialiseBasket;
 
 exports.PizzaSize = PizzaSize;

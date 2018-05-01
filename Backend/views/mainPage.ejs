@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Pizza</title>
-
-    <!-- Bootsrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-    <!-- LESS основний файл -->
-    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less"/>
-    <!-- LESS JavaScript компілятор -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
-
-
-</head>
-<body>
-
+<%include common/header.ejs%>
 
 <div class="header">
 
@@ -37,8 +20,8 @@
 </div>
 
 <div class="pizzaKMA">
-<span>Pizza</span>
-<span>KMA</span>
+    <span>Pizza</span>
+    <span>KMA</span>
 </div>
 
 
@@ -62,32 +45,32 @@
     </div>
 
     <div class="cart_items" >
-    <div class="cart_item">
-        <div class="name">Impresa (small_size)</div>
-        <div class="size">
-            <div class="diametr">
-                <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">30
+        <div class="cart_item">
+            <div class="name">Impresa (small_size)</div>
+            <div class="size">
+                <div class="diametr">
+                    <img class="ui right spaced avatar image" src="assets/images/size-icon.svg">30
+                </div>
+                <div class="weight">
+                    <img class="ui right spaced avatar image" src="assets/images/weight.svg">500
+                </div>
             </div>
-            <div class="weight">
-                <img class="ui right spaced avatar image" src="assets/images/weight.svg">500
+            <div class="correct_pizza">
+                <div class="price">1 UAH</div>
+                <div class="minus">
+                    <button>-</button>
+                </div>
+                <div class="count">2</div>
+                <div class="plus">
+                    <button>+</button>
+
+                </div>
+                <div class="delete">
+                    <button>x</button>
+
+                </div>
             </div>
         </div>
-        <div class="correct_pizza">
-            <div class="price">1 UAH</div>
-            <div class="minus">
-                <button>-</button>
-            </div>
-            <div class="count">2</div>
-            <div class="plus">
-                <button>+</button>
-
-            </div>
-            <div class="delete">
-                <button>x</button>
-
-            </div>
-        </div>
-    </div>
     </div>
 
     <div class="final">
@@ -126,18 +109,5 @@
     </div>
 </div>
 
-<footer class="foter">
-    <span class="text_center"> тут могла б бути ваша реклама</span>
-</footer>
 
-
-<!-- jQuery JavaScript -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-
-<!--Bootsrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<!--Own JavaScript -->
-<script type="text/javascript"  src="assets/js/main.js"> </script>
-</body>
-</html>
+<%include common/footer.ejs%>

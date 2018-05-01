@@ -1,19 +1,30 @@
 /**
  * Created by chaika on 02.02.16.
  */
+var API = require('../API');
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
-var Pizza_List = require('../Pizza_List');
+var Pizza_List = null;
 
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
 
-function showPizzaList(list) {
+
+API.getPizzaList(function (error,pizzaList) {
+    if(error){
+        alert("Failed to load pizzas");
+    }
+    else{
+        Pizza_List=pizzaList;
+    }
+});
+
+function refreshBasketList(list) {
     //Очищаємо старі піци в кошику
     $pizza_list.html("");
 
     //Онволення однієї піци
-    function showOnePizza(pizza) {
+    function refreshOnePizza(pizza) {
         var html_code = Templates.PizzaMenu_OneItem({pizza: pizza});
 
         var $node = $(html_code);
@@ -30,7 +41,7 @@ function showPizzaList(list) {
     countOfPizza = 0;
 
     list.forEach(function (value) {
-       showOnePizza(value);
+       refreshOnePizza(value);
        countOfPizza++;
     });
     $(".amount").text(countOfPizza);
@@ -66,12 +77,12 @@ function filterPizza(filter) {
     });
 
     //Показати відфільтровані піци
-    showPizzaList(pizza_shown);
+    refreshBasketList(pizza_shown);
 }
 
-function initialiseMenu() {
+function initialiseMenu(Pizza_List) {
     //Показуємо усі піци
-    showPizzaList(Pizza_List)
+    refreshBasketList(Pizza_List)
 }
 
 exports.filterPizza = filterPizza;
